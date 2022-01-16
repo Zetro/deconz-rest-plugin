@@ -5743,12 +5743,14 @@ void DeRestPluginPrivate::addSensorNode(const deCONZ::Node *node, const deCONZ::
                     fpAlarmSensor.inClusters.push_back(ci->id());
                     fpBatterySensor.inClusters.push_back(ci->id());
                     fpCarbonMonoxideSensor.inClusters.push_back(ci->id());
-                    fpConsumptionSensor.inClusters.push_back(ci->id());
+                    if (modelId != QLatin1String("lumi.plug.maeu01")) {
+                        fpConsumptionSensor.inClusters.push_back(ci->id());
+                        fpPowerSensor.inClusters.push_back(ci->id());
+                    ]
                     fpFireSensor.inClusters.push_back(ci->id());
                     fpHumiditySensor.inClusters.push_back(ci->id());
                     fpLightSensor.inClusters.push_back(ci->id());
                     fpOpenCloseSensor.inClusters.push_back(ci->id());
-                    fpPowerSensor.inClusters.push_back(ci->id());
                     fpPresenceSensor.inClusters.push_back(ci->id());
                     fpPressureSensor.inClusters.push_back(ci->id());
                     fpSwitch.inClusters.push_back(ci->id());
@@ -9226,7 +9228,7 @@ void DeRestPluginPrivate::updateSensorNode(const deCONZ::NodeEvent &event)
                             }
                             
                             // Correct incomplete sensor fingerprint
-                            if (!i->fingerPrint().hasInCluster(BASIC_CLUSTER_ID))
+                            if (!i->fingerPrint().hasInCluster(BASIC_CLUSTER_ID) && (i->modelId() != QLatin1String("lumi.plug.maeu01")))
                             {
                                 i->fingerPrint().inClusters.push_back(BASIC_CLUSTER_ID);
                             }
