@@ -6176,7 +6176,7 @@ void DeRestPluginPrivate::addSensorNode(const deCONZ::Node *node, const deCONZ::
                         {
                             fpPowerSensor.inClusters.push_back(ci->id());
                         }
-                        else if (i->endpoint() == 0x03 || i->endpoint() == 0x16)
+                        else if (i->endpoint() == 0x03 || i->endpoint() == 0x16 || i->endpoint() == 0x1F)
                         {
                             fpConsumptionSensor.inClusters.push_back(ci->id());
                         }
@@ -9551,6 +9551,7 @@ void DeRestPluginPrivate::updateSensorNode(const deCONZ::NodeEvent &event)
                                     }
                                 }
                                 else if ((i->modelId() == QLatin1String("lumi.plug.mmeu01") && event.endpoint() == 21) ||
+                                         (i->modelId() == QLatin1String("lumi.plug.maeu01") && event.endpoint() == 21) ||
                                          (i->modelId() == QLatin1String("lumi.plug") && event.endpoint() == 2) ||
                                          (i->modelId() == QLatin1String("lumi.switch.b1nacn02") && event.endpoint() == 2) ||
                                          (i->modelId() == QLatin1String("lumi.switch.b2nacn02") && event.endpoint() == 3) ||
@@ -9576,6 +9577,7 @@ void DeRestPluginPrivate::updateSensorNode(const deCONZ::NodeEvent &event)
                                     }
                                 }
                                 else if ((i->modelId() == QLatin1String("lumi.plug.mmeu01") && event.endpoint() == 22) ||
+                                         (i->modelId() == QLatin1String("lumi.plug.maeu01") && event.endpoint() == 31) ||
                                          (i->modelId() == QLatin1String("lumi.plug") && event.endpoint() == 3) ||
                                          (i->modelId() == QLatin1String("lumi.switch.b1nacn02") && event.endpoint() == 3) ||
                                          (i->modelId() == QLatin1String("lumi.switch.b2nacn02") && event.endpoint() == 4) ||
